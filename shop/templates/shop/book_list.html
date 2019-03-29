@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>サンプル</title>
+    <style>
+    table {
+      border-collapse: collapse;
+      border: solid 2px black;
+    }
+    table th {
+      background: #aaa;
+    }
+    table th, table td {
+      border: solid 1px black;
+    }
+    </style>
+</head>
+<body>
+{% if book_list %}
+<table>
+    <tr>
+        <th>タイトル</th>
+        <th>価格</th>
+    </tr>
+    {% for book in book_list %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.price|default_if_none:0 }}円</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+まだ本が登録されていません。
+{% endif %}
+</body>
+</html>
